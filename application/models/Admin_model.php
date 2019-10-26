@@ -9,7 +9,7 @@ class Admin_model extends CI_Model
     {
         $condition = "username ="."'".$data['username']."' AND "."password ="."'".$data['password']."'";
         $this->db->select('*');
-        $this->db->from('admins');
+        $this->db->from('ae_admins');
         $this->db->where($condition);
         $this->db->limit(1);
         $query = $this->db->get();

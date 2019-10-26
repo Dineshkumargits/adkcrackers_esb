@@ -58,11 +58,16 @@ if(isset($this->session->userdata['logged_in']))
                             <?php 
                             if(isset($error_message))
                             {
-                                echo "<div class='error_msg'>";
-                                echo $error_message;
-                                echo "</div>";
+                                echo "<div class='alert alert-danger alert-dismissible' role='alert'>";
+                                echo '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+								echo '<i class="fa fa-times-circle"></i>'. '  '.$error_message; 
+								echo '</div>';
                             }
-                            ?>
+							?>
+							
+										
+										
+									
 							<form class="form-auth-small" action="<?=base_url('admin/login');?>" method="post">
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Email</label>
@@ -86,11 +91,6 @@ if(isset($this->session->userdata['logged_in']))
 						</div>
 					</div>
 					<div class="right">
-						<div class="overlay"></div>
-						<div class="content text">
-							<h1 class="heading">Free Bootstrap dashboard template</h1>
-							<p>by The Develovers</p>
-						</div>
 					</div>
 					<div class="clearfix"></div>
 				</div>

@@ -9,26 +9,26 @@ class Dashboard extends CI_Controller
     }
     public function index()
     {
-        $this->load->view('dashboard');
+        $this->load->view('dashboard/index');
     }
     public function calendar()
     {
-        $this->load->view('calendar');
+        $this->load->view('dashboard/calendar');
     }
-    public function notepad_voie()
+    public function notepad_voice()
     {
-        $this->load->view('notepad_voice');
+        $this->load->view('dashboard/notepad_voice');
     }
     public function chat()
     {
-        $this->load->view('chat');
+        $this->load->view('dashboard/chat');
     }
     public function map()
     {
-        $this->load->view('map');
+        $this->load->view('dashboard/map');
     }
     public function settings()
     {
-        $this->load->view('settings');
+        $this->load->view('dashboard/settings');
     }
 }

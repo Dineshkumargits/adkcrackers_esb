@@ -19,8 +19,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="<?=base_url('assets')?>/img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="<?=base_url('assets')?>/img/favicon.png">
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="icon" type="image/png" sizes="96x96" href="<?=base_url('assets')?>/img/favicon.png">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    
 </head>
 
 <body>
@@ -87,14 +88,16 @@
                     <ul class="nav">
                         <li><a href="<?=base_url('dashboard')?>" class="<?= ($active == 'dashboard') ? 'active':''; ?>"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
                         <li>
-                            <a id="stockManagerHead"  href="#stockManager" data-toggle="collapse" class="<?= ($active == 'stock_list'||$active == 'add_product'||$active == 'products_list'||$active == 'add_company'||$active == 'company_list'||$active == 'sold_products'||$active == 'sold_list') ? 'active':'collapsed'; ?>"><i class="lnr lnr-inbox"></i> <span>Stock Manager</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                            <div id="stockManager" class="<?= ($active == 'stock_list'||$active == 'add_product'||$active == 'products_list'||$active == 'add_company'||$active == 'company_list'||$active == 'sold_products'||$active == 'sold_list') ? 'collapse in':'collapse'; ?>">
+                            <a id="stockManagerHead"  href="#stockManager" data-toggle="collapse" class="<?= ($active == 'stock_list'||$active == 'add_product'||$active == 'products_list'||$active == 'add_company'||$active == 'company_list'||$active == 'add_agents'||$active == 'agents_list'||$active == 'sold_products'||$active == 'sold_list') ? 'active':'collapsed'; ?>"><i class="lnr lnr-inbox"></i> <span>Stock Manager</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                            <div id="stockManager" class="<?= ($active == 'stock_list'||$active == 'add_product'||$active == 'products_list'||$active == 'add_company'||$active == 'company_list'||$active == 'add_agents'||$active == 'agents_list'||$active == 'sold_products'||$active == 'sold_list') ? 'collapse in':'collapse'; ?>">
                                 <ul class="nav">
                                     <li><a href="<?=base_url('stockmanager/stock_list')?>" class="<?= ($active == 'stock_list') ? 'active':''; ?>">Stock List</a></li>
-                                    <li><a href="<?=base_url('stockmanager/add_product')?>" class="<?= ($active == 'add_product') ? 'active':''; ?>">ADD Products</a></li>
+                                    <li><a href="<?=base_url('stockmanager/add_product')?>" class="<?= ($active == 'add_product') ? 'active':''; ?>">Add Products</a></li>
                                     <li><a href="<?=base_url('stockmanager/products_list')?>" class="<?= ($active == 'products_list') ? 'active':''; ?>">Products List</a></li>
-                                    <li><a href="<?=base_url('stockmanager/add_company')?>" class="<?= ($active == 'add_company') ? 'active':''; ?>">ADD Company</a></li>
+                                    <li><a href="<?=base_url('stockmanager/add_company')?>" class="<?= ($active == 'add_company') ? 'active':''; ?>">Add Company</a></li>
                                     <li><a href="<?=base_url('stockmanager/company_list')?>" class="<?= ($active == 'company_list') ? 'active':''; ?>">Company List</a></li>
+                                    <li><a href="<?=base_url('stockmanager/add_agents')?>" class="<?= ($active == 'add_agents') ? 'active':''; ?>">Add Agents</a></li>
+                                    <li><a href="<?=base_url('stockmanager/agents_list')?>" class="<?= ($active == 'agents_list') ? 'active':''; ?>">Agents List</a></li>
                                     <li><a href="<?=base_url('stockmanager/sold_products')?>" class="<?= ($active == 'sold_products') ? 'active':''; ?>">Sold Products</a></li>
                                     <li><a href="<?=base_url('stockmanager/sold_list')?>" class="<?= ($active == 'sold_list') ? 'active':''; ?>">Sold List</a></li>
                                 </ul>
@@ -118,11 +121,11 @@
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="<?=base_url('options/calendar')?>" class="<?= ($active == 'calendar') ? 'active':''; ?>"><i class="lnr lnr-calendar-full"></i> <span>Calendar</span></a></li>
-                        <li><a href="<?=base_url('options/notepad_voice')?>" class="<?= ($active == 'notepad_voice') ? 'active':''; ?>"><i class="lnr lnr-pencil"></i> <span>NotePad+Voice</span></a></li>
-                        <li><a href="<?=base_url('options/chat')?>" class="<?= ($active == 'chat') ? 'active':''; ?>"><i class="lnr lnr-bubble"></i> <span>Chat</span></a></li>
-                        <li><a href="<?=base_url('options/map')?>" class="<?= ($active == 'map') ? 'active':''; ?>"><i class="lnr lnr-map"></i> <span>Map</span></a></li>
-                        <li><a href="<?=base_url('options/settings')?>" class="<?= ($active == 'settings') ? 'active':''; ?>"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+                        <li><a href="<?=base_url('dashboard/calendar')?>" class="<?= ($active == 'calendar') ? 'active':''; ?>"><i class="lnr lnr-calendar-full"></i> <span>Calendar</span></a></li>
+                        <li><a href="<?=base_url('dashboard/notepad_voice')?>" class="<?= ($active == 'notepad_voice') ? 'active':''; ?>"><i class="lnr lnr-pencil"></i> <span>NotePad+Voice</span></a></li>
+                        <li><a href="<?=base_url('dashboard/chat')?>" class="<?= ($active == 'chat') ? 'active':''; ?>"><i class="lnr lnr-bubble"></i> <span>Chat</span></a></li>
+                        <li><a href="<?=base_url('dashboard/map')?>" class="<?= ($active == 'map') ? 'active':''; ?>"><i class="lnr lnr-map"></i> <span>Map</span></a></li>
+                        <li><a href="<?=base_url('dashboard/settings')?>" class="<?= ($active == 'settings') ? 'active':''; ?>"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
                     </ul>
                 </nav>
             </div>

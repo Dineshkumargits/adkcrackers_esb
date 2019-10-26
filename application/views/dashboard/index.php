@@ -5,7 +5,7 @@ if(!isset($this->session->userdata['logged_in']))
     header("location:".base_url('admin'));
 }
 ?>
-		<?php $active = basename($_SERVER['PHP_SELF'], ".php");include "header.php";?>
+		<?php $active = basename($_SERVER['PHP_SELF'], ".php");include __DIR__."/../header.php";?>
 		<!-- MAIN -->
 		<div class="main">
 			<!-- MAIN CONTENT -->
@@ -368,7 +368,7 @@ if(!isset($this->session->userdata['logged_in']))
 		</div>
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
-		<?php include "footer.php";?>
+		<?php include __DIR__."/../footer.php";?>
 	<!-- Javascript -->
 	<script src="<?=base_url('assets')?>/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="<?=base_url('assets')?>/vendor/chartist/js/chartist.min.js"></script>
