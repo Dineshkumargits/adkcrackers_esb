@@ -11,10 +11,9 @@
 	<!-- END WRAPPER -->
 	<script src="<?=base_url('assets')?>/vendor/jquery/jquery.min.js"></script>
 	<script src="<?=base_url('assets')?>/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<!-- doubt in place -->
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-	<!-- doubt in place -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="<?=base_url('assets')?>/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="<?=base_url('assets')?>/scripts/klorofil-common.js"></script>
 </body>

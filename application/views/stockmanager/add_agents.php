@@ -160,7 +160,8 @@ function phonepe_input()
 		ag_input.style.display = "none";
 }
 // company_suggests
-$("#company_id").autocomplete({
+$(document).ready(function(){
+	$("#company_id").autocomplete({
     source:function(request,response){
         $.ajax({
             url:'<?=base_url("stockmanager/company_list_suggests")?>',
@@ -169,6 +170,7 @@ $("#company_id").autocomplete({
             data:{search:request.term},
             success:function(data){
                 response(data);
+				console.log(data);
             },
             error:function(xhr,status,error){
                 alert('error');
@@ -179,5 +181,7 @@ $("#company_id").autocomplete({
         $('#company_id').val(ui.item.label);
         return false;
     }
-});
+});	
+})
+
 </script>
