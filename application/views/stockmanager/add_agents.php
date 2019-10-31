@@ -61,10 +61,13 @@ if(!isset($this->session->userdata['logged_in']))
                                         <input type="text" class="form-control" name ="agent_ph_no" id="agent_ph_no" value="" placeholder="Phone Number">
                                     </div>
 									<br>
-                                    <div class="form-group">
-                                        <label for="company_id" class="control-label sr-only">Company</label>
-                                        <input type="text" class="form-control" name="company_id" id="company_id" value="" placeholder="Company">
+                                    <!-- <div class="form-group">
+                                        <label for="company" class="control-label sr-only">Company</label>
+                                        <input type="text" class="form-control" name="company" id="company" value="" placeholder="Company">
+										
                                     </div>
+									<input type="hidden" id="company_id" name="company_id"> -->
+									<select class="company form-control" id="company" name="company"></select>
                                 </div>
                             </div>
 							<!-- bank details -->
@@ -130,7 +133,7 @@ if(!isset($this->session->userdata['logged_in']))
 <!-- END MAIN -->
 <div class="clearfix"></div>
 <?php include __DIR__."/../footer.php";?>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
 <script>
 function gpay_input()
 {
@@ -161,27 +164,44 @@ function phonepe_input()
 }
 // company_suggests
 $(document).ready(function(){
-	$("#company_id").autocomplete({
-    source:function(request,response){
-        $.ajax({
-            url:'<?=base_url("stockmanager/company_list_suggests")?>',
-            type:'post',
-            dataType:"json",
-            data:{search:request.term},
-            success:function(data){
-                response(data);
-				console.log(data);
-            },
-            error:function(xhr,status,error){
-                alert('error');
-            }
-        });
-    },
-    select:function(event,ui){
-        $('#company_id').val(ui.item.label);
-        return false;
-    }
-});	
+// 	$("#company1").autocomplete({
+//     source:function(request,response){
+//         $.ajax({
+//             url:'<?=base_url("stockmanager/company_list_suggests")?>',
+//             type:'post',
+//             dataType:"json",
+//             data:{search:request.term},
+//             success:function(data){
+//                 response(data);
+//             },
+//             error:function(xhr,status,error){
+//                 alert('error');
+//             }
+//         });
+//     },
+//     select:function(event,ui){
+// 		$('#company1').val(ui.item.label);
+//         $('#company_id').val(ui.item.value);
+//         return false;
+//     }
+// });	
+
+$('.company').select2({
+placeholder: 'Select Company',
+ajax: {
+  url: '<?=base_url("stockmanager/company_list_suggests")?>',
+  dataType: 'json',
+  delay: 250,
+  processResults: function (data) {
+	  console.log(data)
+	return {
+	  results: data
+	};
+	
+  },
+  cache: true
+}
+});
 })
 
 </script>

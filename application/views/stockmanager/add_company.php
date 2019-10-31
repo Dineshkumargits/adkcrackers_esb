@@ -64,7 +64,7 @@ if(!isset($this->session->userdata['logged_in']))
 									<br>
 									<div class="form-group">
 										<label for="agent_id" class="control-label sr-only">Agent Name</label>
-										<input type="text" class="form-control" name ="agent_id" id="agent_id" value="" placeholder="Agent Name (optional)">
+										<input type="text" class="form-control" name ="agent_id" id="agent_id" disabled="disabled" value="" placeholder="Agent Name (optional)">
 									</div>
 								<!-- </div> -->
 							</div>

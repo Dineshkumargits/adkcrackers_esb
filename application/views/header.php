@@ -21,6 +21,7 @@
 	<link rel="apple-touch-icon" sizes="76x76" href="<?=base_url('assets')?>/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="<?=base_url('assets')?>/img/favicon.png">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
     
 </head>
 
