@@ -89,8 +89,8 @@
                     <ul class="nav">
                         <li><a href="<?=base_url('dashboard')?>" class="<?= ($active == 'dashboard') ? 'active':''; ?>"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
                         <li>
-                            <a id="stockManagerHead"  href="#stockManager" data-toggle="collapse" class="<?= ($active == 'stock_list'||$active == 'add_product'||$active == 'products_list'||$active == 'add_company'||$active == 'company_list'||$active == 'add_agents'||$active == 'agents_list'||$active == 'sold_products'||$active == 'sold_list') ? 'active':'collapsed'; ?>"><i class="lnr lnr-inbox"></i> <span>Stock Manager</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                            <div id="stockManager" class="<?= ($active == 'stock_list'||$active == 'add_product'||$active == 'products_list'||$active == 'add_company'||$active == 'company_list'||$active == 'add_agents'||$active == 'agents_list'||$active == 'sold_products'||$active == 'sold_list') ? 'collapse in':'collapse'; ?>">
+                            <a id="stockManagerHead"  href="#stockManager" data-toggle="collapse" class="<?= ($active == 'stock_list'||$active == 'add_product'||$active == 'products_list'||$active == 'add_company'||$active == 'company_list'||$active == 'add_agents'||$active == 'agents_list'||$active == 'sold_products'||$active == 'sold_list'||$active == 'add_client'||$active == 'clients_list') ? 'active':'collapsed'; ?>"><i class="lnr lnr-inbox"></i> <span>Stock Manager</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                            <div id="stockManager" class="<?= ($active == 'stock_list'||$active == 'add_product'||$active == 'products_list'||$active == 'add_company'||$active == 'company_list'||$active == 'add_agents'||$active == 'agents_list'||$active == 'sold_products'||$active == 'sold_list'||$active == 'add_client'||$active == 'clients_list') ? 'collapse in':'collapse'; ?>">
                                 <ul class="nav">
                                     <li><a href="<?=base_url('stockmanager/stock_list')?>" class="<?= ($active == 'stock_list') ? 'active':''; ?>">Stock List</a></li>
                                     <li><a href="<?=base_url('stockmanager/add_product')?>" class="<?= ($active == 'add_product') ? 'active':''; ?>">Add Products</a></li>
@@ -101,6 +101,8 @@
                                     <li><a href="<?=base_url('stockmanager/agents_list')?>" class="<?= ($active == 'agents_list') ? 'active':''; ?>">Agents List</a></li>
                                     <li><a href="<?=base_url('stockmanager/sold_products')?>" class="<?= ($active == 'sold_products') ? 'active':''; ?>">Sold Products</a></li>
                                     <li><a href="<?=base_url('stockmanager/sold_list')?>" class="<?= ($active == 'sold_list') ? 'active':''; ?>">Sold List</a></li>
+                                    <li><a href="<?=base_url('stockmanager/add_client')?>" class="<?= ($active == 'add_client') ? 'active':''; ?>">Add Clients</a></li>
+                                    <li><a href="<?=base_url('stockmanager/clients_list')?>" class="<?= ($active == 'clients_list') ? 'active':''; ?>">Clients List</a></li>
                                 </ul>
                             </div>
                         </li>

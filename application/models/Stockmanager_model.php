@@ -10,28 +10,20 @@ class Stockmanager_model extends CI_Model
         $this->db->insert('ae_companies', $data);
         return true;
     }
-    public function add_agents($data)
-    {
-        $this->db->insert('ae_agents',$data);
-        return $this->db->insert_id();
-    }
     public function updateCompanyByAgentId($c_id,$a_id)
     {
         $data = array('agent_id'=>$a_id);
         $this->db->where('id',$c_id);
         $this->db->update('ae_companies',$data);
     }
+    public function add_agents($data)
+    {
+        $this->db->insert('ae_agents',$data);
+        return $this->db->insert_id();
+    }
     public function company_list_suggests($searchData)
     {
         $response = array();
-        // if(isset($searchData)){
-        //     $this->db->select('*');
-        //     $this->db->where("name like '%".$searchData."%' ");
-        //     $records = $this->db->get('ae_companies')->result();
-        //     foreach($records as $row ){
-        //        $response[] = array("id"=>$row->id,"text"=>$row->name);
-        //     }
-        // }
         if(!empty($searchData)){
 			$this->db->like('name', $searchData);
 			$query = $this->db->select('id,name as text')
@@ -51,5 +43,28 @@ class Stockmanager_model extends CI_Model
     {
         $this->db->insert('ae_products',$data);
         return true;
+    }
+    public function add_client($data)
+    {
+        $this->db->insert('ae_clients',$data);
+        return true;
+    }
+    public function client_type_suggests($searchData)
+    {
+        $response = array();
+        if(!empty($searchData)){
+			$this->db->like('type', $searchData);
+			$query = $this->db->select('id,type as text')
+						->limit(10)
+						->get("ae_client_types");
+			$response = $query->result();
+        }
+        else{
+            $query = $this->db->select('id,type as text')
+                            ->limit(10)
+                            ->get('ae_client_types');
+            $response = $query->result();
+        }
+        return $response;
     }
 }

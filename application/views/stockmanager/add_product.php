@@ -39,7 +39,7 @@ if(!isset($this->session->userdata['logged_in']))
 						<button type="submit" class="btn btn-success "><i class="fa fa-plus-circle"></i> Add</button>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row"><div class="col-md-6 col-md-offset-3">
 					<div class="panel">
 						<div class="panel-heading">
 							<h3 class="panel-title">Product Details</h3>
@@ -60,11 +60,11 @@ if(!isset($this->session->userdata['logged_in']))
 								<!-- Quantity is in doubted -->
 								<div class="form-group col-md-6">
 									<label for="quantity" class="control-label sr-only">Quantity</label>
-									<input type="text" class="form-control" name ="quantity" id="quantity" value="" placeholder="Quantity">
+									<input type="text" class="form-control" name ="quantity" id="quantity" disabled="disabled" value="" placeholder="Quantity">
 								</div>
 							</div>
 						</div>
-					</div>
+					</div></div>
 				</div>
 			</form>
 		</div>

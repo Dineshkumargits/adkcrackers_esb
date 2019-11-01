@@ -30,6 +30,10 @@ class Stockmanager extends CI_Controller
             redirect('stockmanager/add_product');
         }
     }
+    public function products_list()
+    {
+        $this->load->view('stockmanager/products_list');
+    }
     public function add_company()
     {
         $this->load->view('stockmanager/add_company');
@@ -86,8 +90,8 @@ class Stockmanager extends CI_Controller
         $company_id = $this->input->post('company');
         
         $agent_data = array("name"=>$agent_name,"company_id"=>$company_id,"address"=>$agent_address,"contact_no"=>$agent_ph_no,
-                "ifsc_code"=>$agent_ifsc_code,"bank_name"=>$agent_bank_name,"gpay_no"=>$agent_gpay_no,"bhim_upi"=>$agent_bhim_upi."@upi",
-                "phonepe_no"=>$agent_phonepe_no);
+                "account_no"=>$agent_acc_no,"ifsc_code"=>$agent_ifsc_code,"bank_name"=>$agent_bank_name,"gpay_no"=>$agent_gpay_no,
+                "bhim_upi"=>$agent_bhim_upi."@upi","phonepe_no"=>$agent_phonepe_no);
         $agent_id = $this->stockmanager_model->add_agents($agent_data);
         if($agent_id)
         {
@@ -123,8 +127,47 @@ class Stockmanager extends CI_Controller
     {
         $this->load->view('stockmanager/stock_list');
     }
-    public function products_list()
+    public function add_client()
     {
-        $this->load->view('stockmanager/products_list');
+        $this->load->view('stockmanager/add_client');
+    }
+    public function add_clients_data()
+    {
+        $client_name = $this->input->post('client_name');
+        $client_address = $this->input->post('client_address');
+        $client_ph_no = $this->input->post('client_ph_no');
+        $client_type = $this->input->post('type');
+        $client_acc_no = $this->input->post('cl_acc_no');
+        $client_ifsc_code = $this->input->post('cl_ifsc_code');
+        $client_bank_name = $this->input->post('cl_bank_name');
+        $client_gpay_no = $this->input->post('cl_gpay_no');
+        $client_bhim_upi = $this->input->post('cl_bhim_upi');
+        $client_phonepe_no = $this->input->post('cl_phonepe_no');
+        $preferred_company_id = $this->input->post('preferred_company_id');
+        
+        $client_data = array("name"=>$client_name,"address"=>$client_address,"contact_no"=>$client_ph_no,
+                "type"=>$client_type,"preferred_company_id"=>$preferred_company_id,"account_no"=>$client_acc_no,
+                "ifsc_code"=>$client_ifsc_code,"bank_name"=>$client_bank_name,"gpay_no"=>$client_gpay_no,
+                "bhim_upi"=>$client_bhim_upi."@upi","phonepe_no"=>$client_phonepe_no);
+        if($this->stockmanager_model->add_client($client_data))
+        {
+            $this->session->set_flashdata('success_msg', 'Client Details saved successfully');
+            redirect('stockmanager/add_agents');
+        }
+        else
+        {
+            $this->session->set_flashdata('error_msg', 'Something went wrong');
+            redirect('stockmanager/add_agents');
+        }
+    }
+    public function client_type_suggests()
+    {
+        $search = $this->input->get("q");
+        $data = $this->stockmanager_model->client_type_suggests($search);
+        echo json_encode($data);
+    }
+    public function clients_list()
+    {
+        $this->load->view('stockmanager/clients_list');
     }
 }
