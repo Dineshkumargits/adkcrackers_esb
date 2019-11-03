@@ -66,7 +66,7 @@ if(!isset($this->session->userdata['logged_in']))
 									        <select class="type form-control" id="type" name="type"></select>
                                         </div>
                                         <div class="col-md-6">
-									        <select class="company form-control" id="preferred_company_id" name="preferred_company_id"></select>
+											<select class="form-control company" multiple="true" name="preferred_company_id[]"></select>
                                         </div>
                                     </div>
                                 </div>
@@ -165,11 +165,13 @@ $(document).ready(function(){
 
 $('.company').select2({
 placeholder: 'Select Preferred Company',
+allowClear:true,
 ajax: {
   url: '<?=base_url("stockmanager/company_list_suggests")?>',
   dataType: 'json',
   delay: 250,
   processResults: function (data) {
+	  console.log(data);
 	return {
 	  results: data
 	};

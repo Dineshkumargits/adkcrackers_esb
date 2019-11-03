@@ -123,6 +123,53 @@ class Stockmanager extends CI_Controller
     {
         $this->load->view('stockmanager/sold_products');
     }
+    public function sold_products_data()
+    {
+        $date_input = $this->input->post('date');
+        $date = date("Y-m-d",strtotime($date_input));
+        $product_id = $this->input->post('product_id');
+        $company_id = $this->input->post('company_id');
+        $agent_id = $this->input->post('agent_id');
+        $price = $this->input->post('price');
+        $quantity = $this->input->post('quantity');
+        $client_id = $this->input->post('client_id');
+        $product_data = array("date"=>$date,"product_id"=>$product_id,"company_id"=>$company_id,"quantity"=>$quantity,"price"=>$price,"client_id"=>$client_id,"agent_id"=>$agent_id);
+        if($this->stockmanager_model->sold_product($product_data))
+        {
+            $this->session->set_flashdata('success_msg', 'Product Unstacked successfully');
+            $this->stockmanager_model->update_quantity($product_id,$quantity,$type="unstack");
+            redirect('stockmanager/sold_products');
+        }
+        else
+        {
+            $this->session->set_flashdata('error_msg', 'Something went wrong');
+            redirect('stockmanager/sold_products');
+        }
+    }
+    public function product_list_suggests()
+    {
+        $search = $this->input->get("q");
+        $data = $this->stockmanager_model->product_list_suggests($search);
+        echo json_encode($data);
+    }
+    public function client_list_suggests()
+    {
+        $search = $this->input->get("q");
+        $data = $this->stockmanager_model->client_list_suggests($search);
+        echo json_encode($data);
+    }
+    public function agent_list_suggests_by_company()
+    {
+        $company_id = $this->input->get('c_id');
+        $data = $this->stockmanager_model->agent_list_suggests_by_company($company_id);
+        echo json_encode($data);
+    }
+    public function getCompanyByProductId()
+    {
+        $product_id = $this->input->get('p_id');
+        $data = $this->stockmanager_model->getCompanyByProductId($product_id);
+        echo json_encode($data);
+    }
     public function stock_list()
     {
         $this->load->view('stockmanager/stock_list');
@@ -143,7 +190,7 @@ class Stockmanager extends CI_Controller
         $client_gpay_no = $this->input->post('cl_gpay_no');
         $client_bhim_upi = $this->input->post('cl_bhim_upi');
         $client_phonepe_no = $this->input->post('cl_phonepe_no');
-        $preferred_company_id = $this->input->post('preferred_company_id');
+        $preferred_company_id = json_encode($this->input->post('preferred_company_id'));
         
         $client_data = array("name"=>$client_name,"address"=>$client_address,"contact_no"=>$client_ph_no,
                 "type"=>$client_type,"preferred_company_id"=>$preferred_company_id,"account_no"=>$client_acc_no,
@@ -152,12 +199,12 @@ class Stockmanager extends CI_Controller
         if($this->stockmanager_model->add_client($client_data))
         {
             $this->session->set_flashdata('success_msg', 'Client Details saved successfully');
-            redirect('stockmanager/add_agents');
+            redirect('stockmanager/add_client');
         }
         else
         {
             $this->session->set_flashdata('error_msg', 'Something went wrong');
-            redirect('stockmanager/add_agents');
+            redirect('stockmanager/add_client');
         }
     }
     public function client_type_suggests()

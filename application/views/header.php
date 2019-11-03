@@ -13,15 +13,17 @@
 	<link rel="stylesheet" href="<?=base_url('assets')?>/vendor/chartist/css/chartist-custom.css">
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="<?=base_url('assets')?>/css/main.css">
-	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-	<link rel="stylesheet" href="<?=base_url('assets')?>/css/demo.css">
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="<?=base_url('assets')?>/img/apple-icon.png">
     <link rel="icon" type="image/png" sizes="96x96" href="<?=base_url('assets')?>/img/favicon.png">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <!-- SELECT2 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
+    <!-- datepicker -->
+    <link href="<?=base_url('assets/')?>css/datepicker_bootstrap.css" rel="stylesheet">
+    
     
 </head>
 
