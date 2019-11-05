@@ -14,20 +14,19 @@ class Stockmanager extends CI_Controller
     }
     public function add_product_data()
     {
-        $product_name = $this->input->post('product_name');
+        $product_name = $this->input->post('productname');
         $company_id = $this->input->post('company_id');
         $price = $this->input->post('price');
-        $quantity = $this->input->post('quantity');
-        $product_data = array("name"=>$product_name,"company_id"=>$company_id,"price"=>$price,"quantity"=>$quantity);
+        $product_data = array("name"=>$product_name,"company_id"=>$company_id,"price"=>$price);
         if($this->stockmanager_model->add_product($product_data))
         {
             $this->session->set_flashdata('success_msg', 'Product added successfully');
-            redirect('stockmanager/add_product');
+            echo json_encode(array("status" => TRUE));
         }
         else
         {
             $this->session->set_flashdata('error_msg', 'Something went wrong');
-            redirect('stockmanager/add_product');
+            echo json_encode(array("status" => FALSE));
         }
     }
     public function products_list()
@@ -216,5 +215,56 @@ class Stockmanager extends CI_Controller
     public function clients_list()
     {
         $this->load->view('stockmanager/clients_list');
+    }
+    public function product_list_data()
+    {
+        $list = $this->stockmanager_model->get_products();
+		$data = array();
+		$no = $_POST['start'];
+		foreach ($list as $product) {
+            $company = $this->stockmanager_model->get_by_company_id($product->company_id);
+			$no++;
+			$row = array();
+			$row[] = $product->name;
+			$row[] = $company->name;
+			$row[] = $product->price;
+			$row[] = $product->quantity;
+
+			//add html for action
+			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_product('."'".$product->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
+				  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_product('."'".$product->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+		
+			$data[] = $row;
+		}
+
+		$output = array(
+						"draw" => $_POST['draw'],
+						"recordsTotal" => $this->stockmanager_model->count_all(),
+						"recordsFiltered" => $this->stockmanager_model->count_filtered(),
+						"data" => $data,
+				);
+		//output to json format
+		echo json_encode($output);
+    }
+    public function products_edit($id)
+    {
+        $data = $this->stockmanager_model->get_by_id($id);
+		echo json_encode($data);
+    }
+    public function product_delete($id)
+    {
+        $this->stockmanager_model->delete_by_id($id);
+		echo json_encode(array("status" => TRUE));
+    }
+    public function product_update()
+    {
+        $data = array(
+            'name' => $this->input->post('productname'),
+            'company_id' => $this->input->post('company_id'),
+            'price' => $this->input->post('price'),
+            'quantity' => $this->input->post('quantity'),
+        );
+    $this->stockmanager_model->product_update(array('id' => $this->input->post('id')), $data);
+    echo json_encode(array("status" => TRUE));
     }
 }

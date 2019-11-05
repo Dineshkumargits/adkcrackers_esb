@@ -9,7 +9,9 @@
 	<!-- END FOOTER -->
 	</div>
 	<!-- END WRAPPER -->
-	<script src="<?=base_url('assets')?>/vendor/jquery/jquery.min.js"></script>
+	<?php 	if(!($active == "products_list")) { ?>
+		<script src="<?=base_url('assets')?>/vendor/jquery/jquery.min.js"></script>
+	<?php }?>
 	<script src="<?=base_url('assets')?>/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script src="<?=base_url('assets')?>/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="<?=base_url('assets')?>/scripts/klorofil-common.js"></script>
